@@ -1,0 +1,37 @@
+<h6 class="center-align">Similar Songs</h6>
+<form action="#">
+	<div class="col s4">
+		<p onclick="redo()">
+			<label>
+				<input type="checkbox" id="key_filter" checked="checked" />
+				<span>Key</span>
+			</label>
+		</p>
+	</div>
+	<div class="col s4">
+		<p onclick="redo()">
+			<label>
+				<input type="checkbox" id="bpm_filter" checked="checked" />
+				<span>BPM</span>
+			</label>
+		</p>
+	</div>
+	<div class="col s4">
+		<p onclick="redo()">
+			<label>
+				<input type="checkbox" id="energy_filter" checked="checked" />
+				<span>Energy</span>
+			</label>
+		</p>
+	</div>
+</form>
+
+<div id="suggestions-list">
+	<p class="black-text text-lighten-2 center-align" style="font-style: italic;">
+		Select a song from the 'Song Library' menu on the left to see similar songs that might mix well! You can toggle the filters above at any time to include or exclude them from the results.
+	</p>
+</div>
+
+<table>
+	<tbody id="suggestions-table"></tbody>
+</table>

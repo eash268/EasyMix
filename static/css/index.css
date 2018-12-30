@@ -1,0 +1,55 @@
+#top-banner {
+	height: 40vh;
+	border-bottom: 1px solid #e0e0e0;
+	background-color: #EC1709;
+}
+
+#app {
+	height: 60vh;
+}
+
+#songs,
+#video,
+#suggestions {
+	height: 60vh;
+	max-height: 60vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	border-right: 1px solid #e0e0e0;
+}
+
+#title {
+	margin-top: 18%;
+	margin-bottom: 0;
+	font-weight: 800;
+	font-style: italic;
+}
+
+#video_title {
+	font-weight: lighter;
+}
+
+h6 {
+	font-weight: 600;
+}
+
+#myTable tr {
+	cursor: pointer;
+}
+
+#myTable tr:hover {
+	background-color: #ffebee;
+}
+
+.secondary-color {
+	background-color: #478FBC !important;
+}
+
+.secondary-color-text {
+	color: #478FBC !important;
+}
+
+.footer {
+	bottom: 0;
+	margin-top: 70px;
+}

@@ -1,0 +1,16 @@
+<h6 class="center-align">Song Library ({{songs|length}})</h6>
+
+<input type="text" id="myInput" onkeydown="search()" placeholder="Search for a song...">
+
+<table id="myTable">
+	<tbody>
+		{% for song in songs %}
+		<tr onclick="test('{{song[1]}}', '{{song[2]}}', '{{song[3]}}', '{{song[4]}}')">
+			<td>
+				<i class="material-icons secondary-color-text">play_circle_outline</i>
+			</td>
+			<td id="song_name">{{song[1]}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
