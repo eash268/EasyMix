@@ -34,15 +34,16 @@ cursor = connection.cursor()
 
 # functions
 def getAllSongs():
-	query = "SELECT * FROM songs ORDER BY Energy DESC"
+	query = "SELECT DISTINCT * FROM songs ORDER BY Energy, BPM DESC"
 	cursor.execute(query)
 	result = cursor.fetchall()
+	print(result)
 	return result
 
 def getMatchingSongs(key, bpm, energy, key_flag, bpm_flag, energy_flag):
-	query = "SELECT * FROM songs"
+	query = "SELECT DISTINCT * FROM songs"
 	key_root = key[0]
-	bpm_low = float(bpm) - 7
+	bpm_low = float(bpm) - 5
 	bpm_high = float(bpm) + 7
 	energy_low = float(energy)
 	energy_high = 8

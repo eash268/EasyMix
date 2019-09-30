@@ -17,16 +17,22 @@ function test(original, key, bpm, energy) {
 		data: data,
 		success: function(res) {
 			res = JSON.parse(res)
+			res = res.filter(( t={}, a=> !(t[a]=a in t) ));
 			document.getElementById("suggestions-list").innerHTML = "";
 			$("#suggestions-table tr").remove(); 
 
+			var last_title = '';
 			for (let i = 0, length1 = res.length; i < length1; i++) {
 				if (original != res[i][1]) {
 
 					title = res[i][1].split('|')[0];
+					if (title == '' || title == ' ' || title == last_title) {
+						continue;
+					}
 					key = res[i][2];
 					bpm = res[i][3];
 					energy = res[i][4];
+					last_title = title;
 
 					var node = document.createElement("TR");
 					title_cell = node.insertCell(0);
@@ -53,7 +59,7 @@ function test(original, key, bpm, energy) {
 	window.bpm = bpm;
 	window.energy = energy;
 
-	querystring = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&safeSearch=strict&order=relevance&key=AIzaSyA2d08Q0a-O9KZkyCCFXsTd-NgAYEhALfY&q=' + original + ' lyrics';
+	querystring = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&safeSearch=strict&order=relevance&key=AIzaSyDgpCH26M3xM-aUnt2nDEwuj78Oa08tFJQ&q=' + original + ' lyrics';
 	$.get(querystring,
         function(data, status) {
             if (data.items.length == 0) {
@@ -66,6 +72,7 @@ function test(original, key, bpm, energy) {
                         video_id = data.items[i].id.videoId;
                         video_description = data.items[i].snippet.description;
 
+						console.log(video_id);
                         document.getElementById("video_title").innerHTML = video_title;
                         document.getElementById("video_iframe").src = 'https://www.youtube.com/embed/' + video_id + '?autoplay=1';
                     }
@@ -93,17 +100,24 @@ function redo() {
 		url: url,
 		data: data,
 		success: function(res) {
-			res = JSON.parse(res)
+			res = JSON.parse(res);
+			res = res.filter(( t={}, a=> !(t[a]=a in t) ));
 			document.getElementById("suggestions-list").innerHTML = "";
 			$("#suggestions-table tr").remove(); 
 
+			var last_title = ''
 			for (let i = 0, length1 = res.length; i < length1; i++) {
 				if (window.original != res[i][1]) {
 
 					title = res[i][1].split('|')[0];
+					if (title == '' || title == ' ' || title == last_title) {
+						continue;
+					}
+
 					key = res[i][2];
 					bpm = res[i][3];
 					energy = res[i][4];
+					last_title = title;
 
 					var node = document.createElement("TR");
 					title_cell = node.insertCell(0);
