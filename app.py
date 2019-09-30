@@ -37,7 +37,6 @@ def getAllSongs():
 	query = "SELECT DISTINCT * FROM songs ORDER BY Energy, BPM DESC"
 	cursor.execute(query)
 	result = cursor.fetchall()
-	print(result)
 	return result
 
 def getMatchingSongs(key, bpm, energy, key_flag, bpm_flag, energy_flag):
