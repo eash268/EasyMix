@@ -87,9 +87,7 @@ def examplePost():
 	matches = getMatchingSongs(key, bpm, energy, key_flag, bpm_flag, energy_flag)
 	return json.dumps(matches)
 
-
 #------------------------------------------------------------------------------
-
 
 if __name__ == "__main__":
 	app.run()
